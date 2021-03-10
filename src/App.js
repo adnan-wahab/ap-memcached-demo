@@ -87,17 +87,18 @@ function App() {
 
   const handleSubmit = async () => {
     let address = inputRef.current.value
+    inputRef.current.value = ''
+
+    if (addresses.filter(a => a.address === address).length) alert('duplicate address')
 
     let scan = await fetch(etherScan(address))
     .then(response => response.json())
 
-    if (scan.message === 'NOTOK') return alert(address + ' invalid')
+    if (scan.message === 'NOTOK') return alert(address + ' invalid address')
 
     let addressesCopy = addresses.concat({address, balance: scan.result})
     setAddresses(addressesCopy)
     localStorage.setItem('addresses', JSON.stringify(addressesCopy))
-
-    inputRef.current.value = ''
   }
 
   return (
