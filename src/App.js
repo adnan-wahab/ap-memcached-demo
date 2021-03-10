@@ -108,11 +108,11 @@ function App() {
       <span>TRM</span>
     </h3>
     <div className="mt-3 flex sm:mt-0 sm:ml-4">
-    <img src="" />
+    <img className="rounded-full" src={avatar} />
     </div>
   </div>
-    <div className="max-w-7xl p-10 grid-cols-2 grid ">
-      <div>
+    <div className="max-w-7xl p-10 flex Container">
+      <div className="flex-1">
         <h1 className="text-4xl pb-5">Time to start monitoring.</h1>
         <label className="pb-3 block font-medium text-gray-700 text-lg">Address</label>
         <div className="mt-1">
@@ -149,7 +149,7 @@ function App() {
           {<AddressList addresses={addresses.filter(d => d.address.match(filter))} 
           selected={selected} setSelected={setSelected} />}
         </div>
-        <div className="pl-5">
+        <div className="pl-20 flex-initial">
         {selected && (
           <>
           <h3 className="text-lg mt-5 pb-5">Transactions for {selected}</h3>        
